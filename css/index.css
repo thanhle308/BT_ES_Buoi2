@@ -61,3 +61,12 @@ body{
 #glasses{
     transition: all 0.5s;
 }
+
+p.price {
+    color: green;
+}
+spans {
+    color: white;
+    background-color: red;
+    padding: 7px;
+}

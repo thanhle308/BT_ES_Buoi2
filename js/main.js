@@ -10,3 +10,44 @@ let dataGlasses = [
     { id: "G9", src: "./img/g9.jpg", virtualImg: "./img/v9.png", brand: "Coarch", name: "MIDNIGHT VIXEN REMIX", color: "Blue, Black", price: 120, description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit consequatur soluta ad aut laborum amet." }
 ];
 
+let showVirtualGlasses = () => {
+    let content = dataGlasses.map((glass, i) => {
+        return `
+        <div class="col-4 " onclick="tryGlasses('${glass.virtualImg}','${i}')">
+            <img src="${glass.src}" style="width:100%" >
+        </div>
+        `;
+    });
+
+    document.getElementById("vglassesList").innerHTML = content.join("");
+}
+showVirtualGlasses();
+
+let tryGlasses = (img, i) => {
+    let content = `
+         <div id="glass">
+             <img src="${img}" >
+         </div>
+     `;
+    document.getElementById("avatar").innerHTML = content;
+    let info = `
+        <h5>${dataGlasses[i].name + "-"+ dataGlasses[i].brand+"("+ dataGlasses[i].color+")"}</h5>
+        <p class="price"><spans>${"$"+dataGlasses[i].price}</spans> Stocking </p>
+        <p>${dataGlasses[i].description}</p>
+    `;
+    document.getElementById("glassesInfo").innerHTML = info;
+    document.getElementById("glassesInfo").style.display = "block";
+}
+
+window.tryGlasses = tryGlasses;
+let removeGlasses = (show) => {
+    let check = document.getElementById("glass");
+    if (check != null) {
+        show ? document.getElementById("glass").style.display = "block" : document.getElementById("glass").style.display = "none";
+    } else {
+        console.log("Chua thu kinh");
+    }
+}
+window.removeGlasses = removeGlasses;
+
+
